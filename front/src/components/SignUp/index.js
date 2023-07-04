@@ -61,14 +61,17 @@ export const SignUp = ({
 
   // Send POST request to server when user clicks sign up button to register
   const handleSubmit = (e) => {
+    // Check if passwords match
     if (data.password !== data.confirmPassword) return;
     e.preventDefault();
+    // Send POST request to server to register user
     axios
       .post("http://localhost:5000/user/add", {
         username,
         password,
       })
       .then((res) => {
+        // Set isLogged to true and display success toast notification
         setIsLogged(true);
         handleToastNotif("success", res.data.message);
         handleCloseSignUp();
