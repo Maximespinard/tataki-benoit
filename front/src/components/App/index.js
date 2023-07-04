@@ -1,9 +1,12 @@
+// import dependencies
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast, ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 
+// import components
 import { Header } from "../Header";
 import { Map } from "../Map";
 import { SignIn } from "../SignIn";
@@ -19,7 +22,7 @@ function App() {
   const [isFetching, setIsFetching] = useState(true);
   const [isLogged, setIsLogged] = useState(false);
 
-  // functio to handle toast notifications
+  // function to handle toast notifications
   const handleToastNotif = (type, message) => {
     toast[type](message, {
       position: "top-right",
@@ -46,7 +49,6 @@ function App() {
         .catch((err) => {
           console.error(err, "ERROR IN GET USER");
           handleToastNotif("error", err.response.data.message);
-          setIsFetching(false);
         })
         .finally(() => {
           setIsFetching(false);

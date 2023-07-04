@@ -26,7 +26,7 @@ const categoryIcons = {
   "Arts créatifs": <BrushIcon />,
 };
 
-export const Map = () => {
+export const Map = ({ isLogged }) => {
   const [markers, setMarkers] = useState([]);
   const [position, setPosition] = useState([43.604652, 1.444209]);
   const [isFetching, setIsFetching] = useState(true);
@@ -46,11 +46,11 @@ export const Map = () => {
 
   // fetch data from backend
   useEffect(() => {
-    setIsFetching(true);
+    // call api to get all locations
     axios
       .get("http://localhost:5000/locations")
       .then((res) => {
-        setMarkers(res.data);
+        setMarkers(res.data.locations);
       })
       .catch((err) => {
         console.log(err);

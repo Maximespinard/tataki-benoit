@@ -48,7 +48,7 @@ app.get("/locations", async (req, res) => {
     res.status(404).send({ message: "no locations found" });
   }
   // return all locations
-  res.status(200).send(locations);
+  res.status(200).send({ locations });
 });
 
 // Route to add a user
