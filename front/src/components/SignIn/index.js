@@ -43,6 +43,7 @@ const SignInBtn = styled(Button)`
 export const SignIn = ({
   handleCloseSignIn,
   handleOpenSignUp,
+  handleToastNotif,
   isModalOpen,
   setIsLogged,
 }) => {
@@ -62,9 +63,11 @@ export const SignIn = ({
         Cookies.set("token", res.data.token);
         handleCloseSignIn();
         setIsLogged(true);
+        handleToastNotif("success", res.data.message);
       })
       .catch((err) => {
         console.log(err);
+        handleToastNotif("error", err.response.data.message);
       });
   };
 
@@ -73,9 +76,10 @@ export const SignIn = ({
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  // Disable sign in button if username and password are not 4 characters long
+  // Disable sign in button if username or password are not 4 characters long
+  const { username, password } = data;
   const isSignInDisabled =
-    data.username.length <= 4 && data.password.length <= 4;
+    username.length < 4 || password.length < 4 ? true : false;
 
   // JSX
   return (

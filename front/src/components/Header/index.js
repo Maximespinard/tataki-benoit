@@ -5,10 +5,16 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "./style.css";
 
-export const Header = ({ handleOpenModal, isLogged, setIsLogged }) => {
+export const Header = ({
+  handleOpenModal,
+  isLogged,
+  setIsLogged,
+  handleToastNotif,
+}) => {
   const handleLogout = () => {
     Cookies.remove("token");
     setIsLogged(false);
+    handleToastNotif("success", "You are now logged out");
   };
   return (
     <header>

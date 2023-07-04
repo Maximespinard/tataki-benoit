@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+// import dependencies
+import { useState } from "react";
 import axios from "axios";
 import { styled } from "@mui/system";
+import { ToastContainer, toast } from "react-toastify";
+
+// imoprt MUI components
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -46,12 +50,14 @@ const DialogBottom = styled(DialogContent)`
 export const SignUp = ({
   handleCloseSignUp,
   handleOpenSignIn,
+  handleToastNotif,
   isModalOpen,
   setIsLogged,
 }) => {
   // Set default state for form
   const defaultForm = { username: "", password: "", confirmPassword: "" };
   const [data, setData] = useState(defaultForm);
+  const { username, password, confirmPassword } = data;
 
   // Send POST request to server when user clicks sign up button to register
   const handleSubmit = (e) => {
@@ -59,14 +65,18 @@ export const SignUp = ({
     e.preventDefault();
     axios
       .post("http://localhost:5000/user/add", {
-        username: data.username,
-        password: data.password,
+        username,
+        password,
       })
       .then((res) => {
         setIsLogged(true);
+        handleToastNotif("success", res.data.message);
         handleCloseSignUp();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        handleToastNotif("error", err.response.data.message);
+      });
   };
 
   // Update state when user types in form
@@ -75,10 +85,10 @@ export const SignUp = ({
   };
 
   // Check if passwords match
-  const isSamePasswords = data.password === data.confirmPassword;
+  const isSamePasswords = password === confirmPassword;
   // Check if username is valid
   const isUsernameValid =
-    data.username.length >= 4 && data.username.length <= 20;
+    username.length >= 4 && username.length <= 20 && !username.includes(" ");
 
   // JSX
   return (
@@ -160,6 +170,7 @@ export const SignUp = ({
           Sign in!
         </span>
       </DialogBottom>
+      <ToastContainer />
     </Dialog>
   );
 };

@@ -41,7 +41,7 @@ await db.read();
 app.get("/locations", async (req, res) => {
   const locations = db.data.locations;
   if (!locations) {
-    res.send("error finding locations").status(404);
+    res.status(404).send({ message: "no locations found" });
   }
   res.send(locations).status(200);
 });
@@ -52,7 +52,7 @@ app.post("/user/add", async (req, res) => {
   const isUserExist = users.find((user) => user.username === username);
 
   if (isUserExist) {
-    res.status(404).send("user already exist");
+    res.status(404).send({ message: "user already exist" });
   }
 
   const newUser = {
@@ -63,7 +63,7 @@ app.post("/user/add", async (req, res) => {
 
   await db.data.users.push(newUser);
   await db.write();
-  res.status(200).send("user added");
+  res.status(200).send({ message: "user successfully added" });
 });
 
 app.post("/user/login", (req, res) => {
@@ -73,13 +73,13 @@ app.post("/user/login", (req, res) => {
   const user = users.find((user) => user.username === username);
 
   if (!user) {
-    res.status(404).send("user not found");
+    res.status(404).send({ lessage: "user not found" });
   }
 
   const isPasswordCorrect = bcrypt.compareSync(password, user.password);
 
   if (!isPasswordCorrect) {
-    res.status(404).send("username or password incorrect");
+    res.status(404).send({ message: "username or password incorrect" });
   }
 
   const token = jwt.sign({ username, id: user.id }, JWT_SECRET, {
@@ -91,6 +91,7 @@ app.post("/user/login", (req, res) => {
     expiresIn: 3600,
     tokenType: "Bearer",
     authUserState: "authenticated",
+    message: "User successfully logged in",
     // Add any other additional data you want to send
   };
 
@@ -105,17 +106,15 @@ export const verifyToken = (req, res, next) => {
   const JWT_SECRET = process.env.JWT_SECRET;
   const token = req.headers.authorization;
 
-  console.log(JWT_SECRET, token);
-
   if (!token) {
-    res.status(401).send("Unauthorized");
+    res.status(401).send({ message: "Unauthorized" });
     return;
   }
 
   jwt.verify(token, JWT_SECRET, (err, decoded) => {
     if (err) {
       console.log(err);
-      res.status(401).send("Unauthorized");
+      res.status(401).send({ message: "Unauthorized" });
       return;
     }
 

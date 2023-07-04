@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Header } from "../Header";
 import { Map } from "../Map";
@@ -17,6 +19,17 @@ function App() {
   const [isFetching, setIsFetching] = useState(true);
   const [isLogged, setIsLogged] = useState(false);
 
+  // functio to handle toast notifications
+  const handleToastNotif = (type, message) => {
+    toast[type](message, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      draggable: true,
+    });
+  };
+
   // useEffect to check if user is already logged in
   useEffect(() => {
     const token = Cookies.get("token");
@@ -29,10 +42,11 @@ function App() {
         })
         .then((res) => {
           setIsLogged(true);
-          setIsFetching(false);
         })
         .catch((err) => {
           console.error(err, "ERROR IN GET USER");
+          handleToastNotif("error", err.response.data.message);
+          setIsFetching(false);
         })
         .finally(() => {
           setIsFetching(false);
@@ -60,6 +74,7 @@ function App() {
         handleOpenModal={() => handleOpenModal(MODAL_TYPES.SIGN_IN)}
         isLogged={isLogged}
         setIsLogged={setIsLogged}
+        handleToastNotif={handleToastNotif}
       />
       <Map isLogged={isLogged} />
       {modalType === MODAL_TYPES.SIGN_IN && (
@@ -67,6 +82,7 @@ function App() {
           isModalOpen={modalType === MODAL_TYPES.SIGN_IN}
           handleOpenSignUp={() => handleOpenModal(MODAL_TYPES.SIGN_UP)}
           handleCloseSignIn={handleCloseModal}
+          handleToastNotif={handleToastNotif}
           setIsLogged={setIsLogged}
         />
       )}
@@ -75,9 +91,18 @@ function App() {
           isModalOpen={modalType === MODAL_TYPES.SIGN_UP}
           handleCloseSignUp={handleCloseModal}
           handleOpenSignIn={() => handleOpenModal(MODAL_TYPES.SIGN_IN)}
+          handleToastNotif={handleToastNotif}
           setIsLogged={setIsLogged}
         />
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        draggable
+      />
     </>
   );
 }
