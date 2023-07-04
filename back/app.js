@@ -11,8 +11,6 @@ import { fileURLToPath } from "node:url";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 
-// import { verifyToken } from "./middlewares.js";
-
 const app = express();
 dotenv.config();
 
@@ -43,7 +41,7 @@ app.get("/locations", async (req, res) => {
   if (!locations) {
     res.status(404).send({ message: "no locations found" });
   }
-  res.send(locations).status(200);
+  res.status(200).send(locations);
 });
 
 app.post("/user/add", async (req, res) => {

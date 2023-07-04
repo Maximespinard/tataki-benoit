@@ -7,9 +7,7 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import axios from "axios";
-import L from "leaflet";
 
-import { Icon } from "@mui/material";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import PaletteIcon from "@mui/icons-material/Palette";
 import SportsIcon from "@mui/icons-material/Sports";
@@ -66,6 +64,7 @@ export const Map = () => {
   useEffect(() => {
     const getCurrentPosition = () => {
       if (navigator.geolocation) {
+        // get current position from browser
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
