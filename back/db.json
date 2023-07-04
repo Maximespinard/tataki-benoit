@@ -1,0 +1,119 @@
+{
+  "locations": [
+    {
+      "lat": 43.59314162425743,
+      "lng": 1.4503333829428415,
+      "category": "Musique",
+      "text": "flute et douceur, 13h30, Nord jardin des plantes",
+      "date": "2023-07-01T11:30:00Z"
+    },
+    {
+      "lat": 43.59576794139652,
+      "lng": 1.4516230764266673,
+      "category": "Arts visuels",
+      "text": "Concert de Jazz, 18h30, Grand-Rond",
+      "date": "2023-07-01T16:30:00Z"
+    },
+    {
+      "lat": 43.594218538035754,
+      "lng": 1.4447194230720704,
+      "category": "Sports",
+      "text": "muscu de rue, 11h, rue du loubard",
+      "date": "2023-07-01T09:00:00Z"
+    },
+    {
+      "lat": 43.593097668183646,
+      "lng": 1.4403951566851252,
+      "category": "Sports",
+      "text": "Entrainement marathon, 10h30, rue de la chataigne",
+      "date": "2023-07-01T08:30:00Z"
+    },
+    {
+      "lat": 43.59618550427215,
+      "lng": 1.4460091165558961,
+      "category": "Sports",
+      "text": "Course à vélo, 8h45, place du piou piou",
+      "date": "2023-07-01T06:45:00Z"
+    },
+    {
+      "lat": 43.59016352765081,
+      "lng": 1.4499237156104035,
+      "category": "Jeux de rôle",
+      "text": "jeux de rôle D&D, 8h45, place du rameau",
+      "date": "2023-07-01T06:45:00Z"
+    },
+    {
+      "lat": 43.59540531864014,
+      "lng": 1.4432173094945095,
+      "category": "Jeux de société",
+      "text": "jeux d'echec, 11h45, impasse de la cuillere",
+      "date": "2023-07-01T09:45:00Z"
+    },
+    {
+      "lat": 43.59516356893102,
+      "lng": 1.4557500955843932,
+      "category": "Arts créatifs",
+      "text": "origami, 16h, place du foufou",
+      "date": "2023-07-01T14:00:00Z"
+    },
+    {
+      "lat": 43.58205413840038,
+      "lng": 1.4521970115612306,
+      "category": "Musique",
+      "text": "karaoke, 18h30, bar saint andre",
+      "date": "2023-07-01T16:30:00Z"
+    },
+    {
+      "lat": 43.59834170715651,
+      "lng": 1.453312810441687,
+      "category": "Musique",
+      "text": "Concert de Rock, 21h30, bar le lubin",
+      "date": "2023-07-01T19:30:00Z"
+    },
+    {
+      "lat": 43.593777174183494,
+      "lng": 1.4756300740888664,
+      "category": "Musique",
+      "text": "dj set, 21h30, esplanade les longs",
+      "date": "2023-07-01T19:30:00Z"
+    },
+    {
+      "lat": 43.59133762607197,
+      "lng": 1.4167864544509399,
+      "category": "Sports",
+      "text": "Course à vélo, 8h45, place du piou piou",
+      "date": "2023-07-01T06:45:00Z"
+    },
+    {
+      "lat": 43.61182416134152,
+      "lng": 1.4474668896232705,
+      "category": "Sports",
+      "text": "Course à vélo, 8h45, place du piou piou",
+      "date": "2023-07-01T06:45:00Z"
+    },
+    {
+      "lat": 43.62373137552097,
+      "lng": 1.4307160469439002,
+      "category": "Sports",
+      "text": "Course à vélo, 8h45, place du piou piou",
+      "date": "2023-07-01T06:45:00Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "MU2oaB2eDe6CoPkJvUJth",
+      "username": "john",
+      "password": "$2b$10$kYbV5UJgtRX0ekH5B8APReIQNc314qiTQGZe1QnH3WGPBOR7JpJXC"
+    },
+    {
+      "id": "t6ukLmPLMwaIkICZZp6U_",
+      "username": "john",
+      "password": "$2b$10$HuH5dLOIbgsorOPEZ6bE2u4nhEmY3t8QDPy5Gc..Z0bTKNJ/PgSCC"
+    },
+    {
+      "id": "sCQCEPXrpzawr99F54Cuz",
+      "username": "maxime",
+      "password": "$2b$10$IzsoNVVlIXqxMryzvBtQO..HPE2EYCX5XcFehAedF8EYwCRX1GKmq"
+    }
+  ]
+}

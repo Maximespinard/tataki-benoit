@@ -1,0 +1,20 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+.leaflet-container {
+	position: absolute;
+	z-index: 1;
+	height: 90vh!important;
+	width: 100%!important;
+}
+#root {
+	width: 100%!important;
+	height: 100%!important;
+}
+
+.leaflet-bottom {
+	z-index: 1!important;
+}

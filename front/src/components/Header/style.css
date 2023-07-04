@@ -1,0 +1,9 @@
+header {
+    background-color: #58C274;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    display: flex!important;
+    justify-content: space-around;
+    align-items: center;
+};
