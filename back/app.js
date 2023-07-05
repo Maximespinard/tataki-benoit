@@ -123,8 +123,6 @@ app.post("/user/login", (req, res) => {
   const response = {
     token,
     expiresIn: 3600,
-    tokenType: "Bearer",
-    authUserState: "authenticated",
     message: "User successfully logged in",
   };
 

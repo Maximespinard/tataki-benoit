@@ -104,6 +104,11 @@
       "id": "MU2oaB2eDe6CoPkJvUJth",
       "username": "john",
       "password": "$2b$10$kYbV5UJgtRX0ekH5B8APReIQNc314qiTQGZe1QnH3WGPBOR7JpJXC"
+    },
+    {
+      "id": "NV3J-NpFc7ayRhcJKEurV",
+      "username": "maxime",
+      "password": "$2b$10$oqIxQCOtFFBBQOon1VPSqOE6odIFrz/MGg6LULsHBjk.fRiOeSHau"
     }
   ]
 }
