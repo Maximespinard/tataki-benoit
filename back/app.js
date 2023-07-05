@@ -103,7 +103,7 @@ app.post("/user/login", (req, res) => {
 
   // if user not found return 404
   if (!user) {
-    res.status(404).send({ lessage: "user not found" });
+    res.status(404).send({ message: "user not found" });
   }
 
   // check if password is correct
