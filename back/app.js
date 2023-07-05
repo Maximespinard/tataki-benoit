@@ -65,6 +65,17 @@ app.post("/user/add", async (req, res) => {
     res.status(404).send({ message: "user already exist" });
   }
 
+  // create token
+  const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: "1h" });
+
+  const response = {
+    token,
+    expiresIn: 3600,
+    tokenType: "Bearer",
+    authUserState: "authenticated",
+    message: "user successfully added",
+  };
+
   // create new user object
   const newUser = {
     id: nanoid(),
@@ -77,7 +88,7 @@ app.post("/user/add", async (req, res) => {
   // write data to JSON file
   await db.write();
   // return success message
-  res.status(200).send({ message: "user successfully added" });
+  res.status(200).send(response);
 });
 
 // Route to login a user

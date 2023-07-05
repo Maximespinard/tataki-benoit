@@ -80,7 +80,8 @@ export const SignUp = ({
         password,
       })
       .then((res) => {
-        // Set isLogged to true and display success toast notification
+        // Set token to cookie, isLogged to true and display success toast notification
+        Cookies.set("token", res.data.token);
         setIsLogged(true);
         handleToastNotif("success", res.data.message);
         handleCloseSignUp();
