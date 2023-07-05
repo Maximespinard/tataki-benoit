@@ -7,6 +7,7 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import axios from "axios";
+import L from "leaflet";
 
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import PaletteIcon from "@mui/icons-material/Palette";
@@ -17,14 +18,7 @@ import BrushIcon from "@mui/icons-material/Brush";
 
 import "leaflet/dist/leaflet.css";
 
-const categoryIcons = {
-  Musique: <MusicNoteIcon />,
-  "Arts visuels": <PaletteIcon />,
-  Sports: <SportsIcon />,
-  "Jeux de rôle": <CasinoIcon />,
-  "Jeux de société": <GroupIcon />,
-  "Arts créatifs": <BrushIcon />,
-};
+import iconPng from "../../assets/icon.png";
 
 export const Map = ({ isLogged }) => {
   const [markers, setMarkers] = useState([]);
@@ -90,6 +84,13 @@ export const Map = ({ isLogged }) => {
     return <p>Loading...</p>;
   }
 
+  const iconMarker = L.icon({
+    iconUrl: iconPng,
+    iconSize: [25, 41],
+    iconAnchor: [10, 41],
+    popupAnchor: [2, -40],
+  });
+
   return (
     <MapContainer
       center={position}
@@ -103,12 +104,15 @@ export const Map = ({ isLogged }) => {
       />
       <MapEvents />
       {markers.map((marker, index) => (
-        <Marker position={[marker.lat, marker.lng]} key={index}>
+        <Marker
+          position={[marker.lat, marker.lng]}
+          key={index}
+          icon={iconMarker}
+        >
           <Popup>
             <div>
               <h2>Description du point</h2>
               <p>Infos: {marker.text}</p>
-              {categoryIcons[marker.category]}
             </div>
           </Popup>
         </Marker>
