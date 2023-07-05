@@ -36,8 +36,20 @@ const UserIcon = styled(PersonIcon)`
   color: rgba(0, 0, 0, 0.54);
 `;
 
+const DialogBottom = styled(DialogContent)`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
+
+const SignUpLink = styled(DialogContentText)`
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
 const SignInBtn = styled(Button)`
   margin-top: 16px;
+  color: white;
 `;
 
 export const SignIn = ({
@@ -128,15 +140,12 @@ export const SignIn = ({
         </FormContainer>
       </DialogContent>
       <DialogContent>
-        <DialogContentText>
-          Don't have an account?{" "}
-          <span
-            style={{ color: "blue", cursor: "pointer" }}
-            onClick={handleOpenSignUp}
-          >
+        <DialogBottom>
+          <DialogContentText>Don't have an account? </DialogContentText>
+          <SignUpLink color="primary" onClick={handleOpenSignUp}>
             Sign up!
-          </span>
-        </DialogContentText>
+          </SignUpLink>
+        </DialogBottom>
       </DialogContent>
     </Dialog>
   );

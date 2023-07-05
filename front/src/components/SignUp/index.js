@@ -2,7 +2,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { styled } from "@mui/system";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import Cookies from "js-cookie";
 
 // imoprt MUI components
 import Button from "@mui/material/Button";
@@ -13,6 +14,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import LockIcon from "@mui/icons-material/Lock";
 import PersonIcon from "@mui/icons-material/Person";
+import { Typography } from "@mui/material";
 
 // Styled components
 const Title = styled(DialogTitle)`
@@ -37,8 +39,14 @@ const UserIcon = styled(PersonIcon)`
   color: rgba(0, 0, 0, 0.54);
 `;
 
+const SignInLink = styled(Typography)`
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
 const SignUpBtn = styled(Button)`
   margin-top: 16px;
+  color: white;
 `;
 
 const DialogBottom = styled(DialogContent)`
@@ -64,6 +72,7 @@ export const SignUp = ({
     // Check if passwords match
     if (data.password !== data.confirmPassword) return;
     e.preventDefault();
+
     // Send POST request to server to register user
     axios
       .post("http://localhost:5000/user/add", {
@@ -166,12 +175,9 @@ export const SignUp = ({
       </DialogContent>
       <DialogBottom>
         <DialogContentText>Already have an account? </DialogContentText>
-        <span
-          style={{ color: "blue", cursor: "pointer" }}
-          onClick={handleOpenSignIn}
-        >
+        <SignInLink color="primary" onClick={handleOpenSignIn}>
           Sign in!
-        </span>
+        </SignInLink>
       </DialogBottom>
       <ToastContainer />
     </Dialog>

@@ -20,11 +20,21 @@ export const Header = ({
     <header>
       <Typography variant="h5">KANTA</Typography>
       {isLogged ? (
-        <Button variant="contained" color="primary" onClick={handleLogout}>
+        <Button
+          variant="contained"
+          color="primary"
+          style={{ color: "white" }}
+          onClick={handleLogout}
+        >
           Déconnexion
         </Button>
       ) : (
-        <Button variant="contained" color="primary" onClick={handleOpenModal}>
+        <Button
+          variant="contained"
+          color="primary"
+          style={{ color: "white" }}
+          onClick={handleOpenModal}
+        >
           Connexion
         </Button>
       )}
