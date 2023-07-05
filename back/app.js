@@ -165,22 +165,21 @@ app.get("/user/me", verifyToken, (req, res) => {
   res.status(200).send(req.user);
 });
 
+//
 /* app.post("/locations/add", async (req, res) => {
   const post = {
     id: nanoid(),
     name: req.body.name,
+    description: req.body.description,
+    latitude: req.body.latitude,
+    longitude: req.body.longitude,
+    category: req.body.category,
   };
   await db.data.data.push(post);
   await db.write();
   res.send(post);
 });
-
-app.delete("/data/delete/:id", async (req, res) => {
-  const id = req.params.id;
-  await db.data.data.splice(id, 1);
-  await db.write();
-  res.send(id);
-}); */
+ */
 
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`);
